@@ -29,8 +29,15 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
-    <EmbeddedResource Include="CANADAPage.xaml" />
+    <EmbeddedResource Include="CANADAPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\NavigationBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -64,6 +71,12 @@
     <Compile Include="Services\RestService.cs" />
     <Compile Include="Services\UtilService.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="View\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="Model\UserInfoModel.cs" />
+    <Compile Include="CustomControl\CustomEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

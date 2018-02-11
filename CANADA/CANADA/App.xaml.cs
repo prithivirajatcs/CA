@@ -15,12 +15,34 @@ namespace CANADA
 
         public App()
         {
-            InitializeComponent();
-            IsTestModeEnabled = false;
-            //MyApplicationDataSource = new StubDataSource();
-            MyApplicationDataSource = new RestDataSource(Constants.Environment);
-            NavigationServiceInstance = DependencyService.Get<INavigationService>();
-            NavigationServiceInstance.CreatePageMap();
+            try
+            {
+                InitializeComponent();
+                IsTestModeEnabled = false;
+                //MyApplicationDataSource = new StubDataSource();
+                MyApplicationDataSource = new RestDataSource(Constants.Environment);
+                NavigationServiceInstance = DependencyService.Get<INavigationService>();
+                try
+                {
+                    NavigationServiceInstance.CreatePageMap();
+                }
+                catch (System.Exception ex)
+                {
+
+                }
+
+
+                if (IsTestModeEnabled == false)
+                {
+                    NavigationServiceInstance.NavigateTo(Enum.PageName.LOGIN, "", true);
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+
+
         }
 
         protected override void OnStart()
