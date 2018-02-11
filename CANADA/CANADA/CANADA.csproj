@@ -30,6 +30,10 @@
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
     <EmbeddedResource Include="CANADAPage.xaml" />
+    <EmbeddedResource Include="View\NavigationBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -39,6 +43,27 @@
       <DependentUpon>CANADAPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomControl\BaseContentPage.cs" />
+    <Compile Include="View\NavigationBar.xaml.cs">
+      <DependentUpon>NavigationBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enum\DeviceOrientations.cs" />
+    <Compile Include="Enum\PageName.cs" />
+    <Compile Include="Enum\Miscellaneous.cs" />
+    <Compile Include="Enum\ServiceName.cs" />
+    <Compile Include="CustomControl\CustomNavigationPage.cs" />
+    <Compile Include="CustomControl\ExtendedViewCell.cs" />
+    <Compile Include="Interface\IDataSource.cs" />
+    <Compile Include="Interface\IMessageHandler.cs" />
+    <Compile Include="Interface\INavigationService.cs" />
+    <Compile Include="Interface\IServiceHandler.cs" />
+    <Compile Include="Model\AboutCanandaListModel.cs" />
+    <Compile Include="Model\ErrorLog.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\RestDataSource.cs" />
+    <Compile Include="Services\RestService.cs" />
+    <Compile Include="Services\UtilService.cs" />
+    <Compile Include="Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -50,9 +75,21 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.5.0.121934\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
+    <Folder Include="Model\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="CustomControl\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Interface\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
