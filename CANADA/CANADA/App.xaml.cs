@@ -1,6 +1,8 @@
-﻿using CANADA.Interface;
-using CANADA.Services;
+﻿using System;
 using Xamarin.Forms;
+using CANADA.Interface;
+using CANADA.Services;
+using CANADA.ViewModel;
 
 namespace CANADA
 {
@@ -8,6 +10,7 @@ namespace CANADA
     {
         public static INavigationService NavigationServiceInstance;
         public static INavigation CustomNavigation;
+        public static ICommonUtility MyUtility;
         public static IDataSource MyApplicationDataSource;
         public static bool IsMasterDetailFlow = false;
         public static bool IsTestModeEnabled = false;
@@ -15,35 +18,31 @@ namespace CANADA
 
         public App()
         {
-            try
+            InitializeComponent();
+            //TODO Comment before build
+            IsTestModeEnabled = true;
+            //MyApplicationDataSource = new StubDataSource();
+            MyApplicationDataSource = new RestDataSource(Constants.Environment);
+            MyUtility = DependencyService.Get<ICommonUtility>();
+            NavigationServiceInstance = DependencyService.Get<INavigationService>();
+            NavigationServiceInstance.CreatePageMap();
+            // MainPage = new camerapocPage();
+
+
+
+
+            //TODO: Enable this for RT POC
+            if (IsMasterDetailFlow)
             {
-                InitializeComponent();
-                IsTestModeEnabled = false;
-                //MyApplicationDataSource = new StubDataSource();
-                MyApplicationDataSource = new RestDataSource(Constants.Environment);
-                NavigationServiceInstance = DependencyService.Get<INavigationService>();
-                try
-                {
-                    NavigationServiceInstance.CreatePageMap();
-                }
-                catch (System.Exception ex)
-                {
-
-                }
-
-
-                if (IsTestModeEnabled == false)
-                {
-                    NavigationServiceInstance.NavigateTo(Enum.PageName.LOGIN, "", true);
-                }
+                // MainPage = new MasterMainPage();
             }
-            catch (System.Exception ex)
+            else
             {
-
+                NavigationServiceInstance.NavigateTo(Enum.PageName.LOGIN, "", true);
             }
-
 
         }
+
 
         protected override void OnStart()
         {
@@ -59,6 +58,8 @@ namespace CANADA
         {
             // Handle when your app resumes
         }
+
+ 
 
         public static void Logout()
         {

@@ -1,19 +1,18 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows.Input;
+using Xamarin.Forms;
+//using Plugin.Connectivity;
+using System.Diagnostics;
 using CANADA.Interface;
 using CANADA.Model;
-using Xamarin.Forms;
+using CANADA.Services;
+using System.IO;
 
 namespace CANADA.ViewModel
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        public LoginViewModel()
-        {
-        }
-
         #region "Properties"
         public INavigationService navigationService;
 
@@ -79,8 +78,8 @@ namespace CANADA.ViewModel
         }
 
 
-        Color _loginButtonTextColor;
 
+        Color _loginButtonTextColor;
         public Color LoginButtonTextColor
         {
             get
@@ -101,71 +100,64 @@ namespace CANADA.ViewModel
         #endregion
 
         #region "Events And Methods"
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
+
+        /// <summary>
+        /// Used to handle Login Button
+        /// </summary>
+        /// <param name="navService"></param>
+
         public LoginViewModel(INavigationService navService)
         {
             navigationService = navService;
 
-                UserName = string.Empty;
-                Password = string.Empty;
-                LoginButtonBackgroundColor = (Color)Application.Current.Resources["BannerColor"];
-                LoginButtonTextColor = (Color)Application.Current.Resources["LoginActiveTextColor"];
+            UserName = string.Empty;
+            Password = string.Empty;
+
+            LoginButtonBackgroundColor = (Color)Application.Current.Resources["BannerColor"];
+            LoginButtonTextColor = (Color)Application.Current.Resources["LoginActiveTextColor"];
 
 
             this.LoginCommand = new Command((action) =>
+           {
+
+                this.IsBusy = true;
+               UserInfoModel loginmodel = new UserInfoModel();
+               var currentApp = Application.Current as App;
+                   
+                   if (App.IsTestModeEnabled)
+                   {
+                       loginmodel.User_Name = "test";
+                       loginmodel.Password = "test";
+                   }
+
+                AboutCanandaListModel resposeList = App.MyApplicationDataSource.GetAboutList().Result;
+               this.IsBusy = false;
+               App.NavigationServiceInstance.NavigateTo(Enum.PageName.HOME, resposeList, false);
+
+
+           });
+
+
+            this.ForgotPasswordCmd = new Command(() =>
             {
-                //if (!CrossConnectivity.Current.IsConnected)
-                //{
-                //    Application.Current.MainPage.DisplayAlert("", "Please check your internet connection", "OK");
-                //}
-                //else
-                //{
-                    UserInfoModel loginmodel = new UserInfoModel();
-                    var currentApp = Application.Current as App;
-                    if (ValidateLogin())
-                    {
-                        this.IsBusy = true;
-                        if (App.IsTestModeEnabled)
-                        {
-                            loginmodel.User_Name = "CAWipro";
-                            loginmodel.Password = "Wipro123";
-                            //UtilService.UserName = "akarthsu";
-                            //UtilService.Password = "Autumn17";
-                        App.NavigationServiceInstance.NavigateTo(Enum.PageName.HOME, "", false);
-                        }
-
-                    //}
-                }
-
             });
-
         }
-        public bool ValidateLogin()
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty((UserName.Trim())) && !string.IsNullOrEmpty((Password.Trim())) && UserName != Password)
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.ToString());
-                return false;
-            }
 
-        }
         private void CheckLoginStatus()
         {
             if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
             {
+                //LoginButtonBackgroundColor = (Color)Application.Current.Resources["Primary"];
                 LoginButtonBackgroundColor = Color.FromHex("#00465B");
+                //LoginButtonTextColor = (Color)Application.Current.Resources["LoginInActiveTextColor"];
                 LoginButtonTextColor = Color.FromHex("#BCD432");
             }
             else
@@ -177,5 +169,4 @@ namespace CANADA.ViewModel
         }
         #endregion
     }
-
 }

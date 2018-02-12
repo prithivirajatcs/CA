@@ -6,7 +6,8 @@ namespace CANADA.Model
     public class AboutCanandaListModel
     {
         [JsonProperty("title")]
-        public string title { get; set; }
+        public string pagetitle { get; set; }
+        [JsonProperty("rows")]
         public List<CAList> calist { get; set; }
     }
 

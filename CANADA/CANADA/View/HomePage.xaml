@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cc:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CANADA.View.HomePage" xmlns:cc="clr-namespace:CANADA.CustomControl;assembly=CANADA" Style="{StaticResource ContentPageStyle}" xmlns:conv="clr-namespace:CANADA.Converters;assembly=CANADA">
+    <cc:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <conv:UrlToImageSourceConverter x:Key="urlToImageSourceConverter" />
+        </ResourceDictionary>
+    </cc:BaseContentPage.Resources>
+    <cc:BaseContentPage.Content>
+    <StackLayout>
+            <StackLayout HeightRequest="40" BackgroundColor="Silver">
+
+          <Label  Text="Sort by Title" HorizontalOptions="CenterAndExpand" TextColor="#0D3D4F" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="15" FontAttributes="Bold" VerticalOptions="CenterAndExpand"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding RemovePhotoCommand}" CommandParameter="{Binding}" NumberOfTapsRequired="1" />
+                                        </StackLayout.GestureRecognizers>
+                          
+
+        </StackLayout>
+
+        <ListView x:Name="listOfBestPractices" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshBestPracticesCommand}" IsRefreshing="{Binding IsPullToRefreshEnabled}" SeparatorVisibility="None" ItemsSource="{Binding List}" HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="1" />
+                                </Grid.RowDefinitions>
+                              
+                                <Grid Grid.Row="0" HeightRequest="100" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <!--<Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>-->
+                                    <Label Text="{Binding title}" FontSize="20" LineBreakMode="WordWrap" Grid.Row="0" TextColor="Black" />
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" >
+
+                              
+                                    <Label    Text="{Binding description}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="WordWrap"  FontSize="14" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" />
+                                    <Image  Source="{Binding imageHref, Converter={StaticResource urlToImageSourceConverter}}" Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+
+                                </StackLayout>
+                                    
+<!--                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding description}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="WordWrap"  FontSize="14" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="Black" />-->
+<!--                                    <Image Grid.Row="1" Grid.Column="1" BackgroundColor="Lime" Source="{Binding imageHref, Converter={StaticResource urlToImageSourceConverter}}" Aspect="AspectFit" HeightRequest="70" WidthRequest="40" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />-->
+                                </Grid>
+
+
+                                <BoxView Grid.Row="1" BackgroundColor="Black" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                                </BoxView>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            </StackLayout>
+    </cc:BaseContentPage.Content>
+</cc:BaseContentPage>

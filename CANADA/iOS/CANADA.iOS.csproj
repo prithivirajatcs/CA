@@ -115,6 +115,14 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-87x87%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-58x58%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -134,8 +142,18 @@
     <Compile Include="Renderer\CustomEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\login_image.png" />
     <BundleResource Include="Resources\splashscreen.png" />
+    <BundleResource Include="Resources\Menubar.png" />
+    <BundleResource Include="Resources\Logoff.png" />
+    <BundleResource Include="Resources\Logout.png" />
+    <BundleResource Include="Resources\menu.png" />
+    <BundleResource Include="Resources\Password.png" />
+    <BundleResource Include="Resources\PasswordSelected.png" />
+    <BundleResource Include="Resources\Search.png" />
+    <BundleResource Include="Resources\usericon.png" />
+    <BundleResource Include="Resources\Username.png" />
+    <BundleResource Include="Resources\UsernameSelected.png" />
+    <BundleResource Include="Resources\login_image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\netstandard1.0\Xamarin.Forms.targets')" />
