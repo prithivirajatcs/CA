@@ -24,25 +24,5 @@ namespace CANADA.CustomControl
 
         #endregion
 
-        #region "Methods"
-        private void GenerateAction()
-        {
-            //IMessageHandler messageHandler = new EUJIT.Services.MessageHandler(App.presentContentPage);  //DependencyService.Get<IMessageHandler>();
-            //messageHandler.NegativeButtonHandler += (sender, e) =>
-            //{
-
-            //};
-            //messageHandler.PositiveButtonHandler += (sender, e) =>
-            //{
-            //    //Application.Current.MainPage.Navigation.PopToRootAsync(true);
-            //    App.NavigationServiceInstance.NavigateTo(Enum.PageName.LOGIN, null, true);
-
-            //};
-            //messageHandler.ShowMessageConfirm("Are you sure, you want Logout", "Logout", "Yes", "No");
-        }
-        #endregion
-        public CustomNavigationPage()
-        {
-        }
     }
 }

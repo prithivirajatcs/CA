@@ -47,54 +47,10 @@ namespace CANADA.CustomControl
         {
             base.OnAppearing();
 
-            if (Device.OS == TargetPlatform.Android)
-            {
-                /*Device.BeginInvokeOnMainThread(() =>
-                {
-                    this.Animate("anim", (s) => Layout(new Rectangle(((1 - s) * Width),
-                                                          AnchorY, Width, Height)),
-                                 16, 300, Easing.Linear, null, null);
-                });
-                      */
-            }
+ 
         }
-        //private Enum.PageName currentPageName;
-        //public Enum.PageName CurrentPageName
-        //{
-        //    get { return currentPageName; }
-        //    set { currentPageName = value; }
-        //}
+       
 
-        protected override bool OnBackButtonPressed()
-        {
-            try
-            {
-                if (App.CustomNavigation.NavigationStack.Count > 0)
-                {
-                    if (App.CustomNavigation.NavigationStack.Count == 2)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            var result = await this.DisplayAlert("Logout", "Are you sure you want to logout?", "Yes", "No");
-                            if (result)
-                            {
 
-                                App.Logout();
-                            }
-                        });
-                    }
-                    else
-                    {
-                        App.NavigationServiceInstance.GoBack();
-                    }
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
-        }
     }
 }

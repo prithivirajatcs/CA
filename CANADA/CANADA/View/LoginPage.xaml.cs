@@ -90,8 +90,6 @@ namespace CANADA.View
         {
             if (string.IsNullOrEmpty(vm.UserName))
             {
-                //BoxViewUserName.Color = Color.FromHex("#829aa2");
-                //Textbox.TextColor = Color.FromHex("#708c95");
                 BoxViewUserName.Color = Color.FromHex("#E3E3E3");
                 Textbox.TextColor = Color.FromHex("#B9B9B9");
                 UserIcon.Source = "Username.png";
@@ -109,10 +107,7 @@ namespace CANADA.View
         {
             if (string.IsNullOrEmpty(vm.Password))
             {
-                //BoxViewPassword.Color = Color.FromHex("#829aa2");
-                //Password.TextColor = Color.FromHex("#708c95");
                 BoxViewPassword.Color = Color.FromHex("#E3E3E3");
-
                 Password.TextColor = Color.FromHex("#B9B9B9");
                 UserPassword.Source = "Password.png";
 

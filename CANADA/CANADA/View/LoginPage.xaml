@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cc:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CANADA.View.LoginPage" xmlns:cc="clr-namespace:CANADA.CustomControl;assembly=CANADA"  Style="{StaticResource ContentPageStyle}">
     <ScrollView>
-        <!-- <Grid HeightRequest="500" BackgroundColor="Red">-->
         <Grid>
             <Image Source="login_image.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill">
             </Image>

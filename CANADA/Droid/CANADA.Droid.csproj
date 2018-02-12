@@ -138,14 +138,8 @@
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\drawable\edittext_bottom_line.xml" />
     <AndroidResource Include="Resources\drawable\edittext_normal.xml" />
-    <AndroidResource Include="Resources\drawable\Menubar.png" />
-    <AndroidResource Include="Resources\drawable\Logoff.png" />
-    <AndroidResource Include="Resources\drawable\Logout.png" />
-    <AndroidResource Include="Resources\drawable\menu.png" />
     <AndroidResource Include="Resources\drawable\Password.png" />
     <AndroidResource Include="Resources\drawable\PasswordSelected.png" />
-    <AndroidResource Include="Resources\drawable\Search.png" />
-    <AndroidResource Include="Resources\drawable\usericon.png" />
     <AndroidResource Include="Resources\drawable\Username.png" />
     <AndroidResource Include="Resources\drawable\UsernameSelected.png" />
     <AndroidResource Include="Resources\drawable\icon.png" />

@@ -12,9 +12,7 @@ using CANADA;
 [assembly: Dependency(typeof(NavigationService))]
 namespace CANADA.Services
 {
-    /// <summary>
-    /// This class is pecifically done for MAPICS POC
-    /// </summary>
+
     public class NavigationService : INavigationService
     {
         public static Dictionary<PageName, Type> PageMapping = new Dictionary<PageName, Type>();
@@ -28,11 +26,8 @@ namespace CANADA.Services
         {
             #region "Page Mapping Init"
             PageMapping.Clear();
-
-            //iApprove Page Mapping for Navigation
             PageMapping.Add(PageName.LOGIN, typeof(LoginPage));
             PageMapping.Add(PageName.HOME, typeof(HomePage));
-
 
             #endregion
         }
@@ -64,7 +59,6 @@ namespace CANADA.Services
                     {
                         if (App.IsMasterDetailFlow)
                         {
-                            //((MasterDetailPage)Application.Current.MainPage).Detail.Navigation.PushAsync(screenObj, true);
 
                             ((MasterDetailPage)Application.Current.MainPage).Detail = screenObj;
                         }
@@ -86,20 +80,9 @@ namespace CANADA.Services
             }
 
         }
-        /// <summary>
-        /// Used to set the starting page to the application
-        /// </summary>
-        /// <param name="page">Page.</param>
+       
         public void SetStartPage(Page page)
         {
-            //if (page as LoginPage != null)
-            //{
-            //  Application.Current.MainPage = new CustomNavigationPage(page); //, false);
-            //}
-            //else
-            //{
-            //  Application.Current.MainPage = new CustomNavigationPage(page);
-            //}
             Application.Current.MainPage = new CustomNavigationPage(page);
             App.CustomNavigation = Application.Current.MainPage.Navigation;
         }

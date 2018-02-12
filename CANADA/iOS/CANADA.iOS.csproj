@@ -28,7 +28,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>iOS Team Provisioning Profile: com.adient.mobile.jit</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.test.beacons2</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -77,7 +77,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>iOS Team Provisioning Profile: com.adient.mobile.jit</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.test.beacons2</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -143,14 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\splashscreen.png" />
-    <BundleResource Include="Resources\Menubar.png" />
-    <BundleResource Include="Resources\Logoff.png" />
-    <BundleResource Include="Resources\Logout.png" />
-    <BundleResource Include="Resources\menu.png" />
     <BundleResource Include="Resources\Password.png" />
     <BundleResource Include="Resources\PasswordSelected.png" />
-    <BundleResource Include="Resources\Search.png" />
-    <BundleResource Include="Resources\usericon.png" />
     <BundleResource Include="Resources\Username.png" />
     <BundleResource Include="Resources\UsernameSelected.png" />
     <BundleResource Include="Resources\login_image.png" />

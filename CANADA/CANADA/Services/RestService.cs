@@ -102,7 +102,6 @@ namespace CANADA.Services
             }
             catch (Exception ex)
             {
-                //TODO: write error handler here
             }
             return (T)(object)"{}";
         }

@@ -41,10 +41,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="LangResource\AppData.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppData.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -59,23 +55,17 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomControl\BaseContentPage.cs" />
-    <Compile Include="Enum\DeviceOrientations.cs" />
     <Compile Include="Enum\PageName.cs" />
     <Compile Include="Enum\Miscellaneous.cs" />
-    <Compile Include="Enum\ServiceName.cs" />
     <Compile Include="CustomControl\CustomNavigationPage.cs" />
     <Compile Include="CustomControl\ExtendedViewCell.cs" />
     <Compile Include="Interface\IDataSource.cs" />
-    <Compile Include="Interface\IMessageHandler.cs" />
     <Compile Include="Interface\INavigationService.cs" />
     <Compile Include="Interface\IServiceHandler.cs" />
     <Compile Include="Model\AboutCanandaListModel.cs" />
-    <Compile Include="Model\ErrorLog.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\RestDataSource.cs" />
     <Compile Include="Services\RestService.cs" />
-    <Compile Include="Services\UtilService.cs" />
-    <Compile Include="Constants.cs" />
     <Compile Include="View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -84,10 +74,6 @@
     <Compile Include="CustomControl\CustomEntry.cs" />
     <Compile Include="View\iApproveNavBar.xaml.cs">
       <DependentUpon>iApproveNavBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interface\ICommonUtility.cs" />
-    <Compile Include="LangResource\AppData.Designer.cs">
-      <DependentUpon>AppData.resx</DependentUpon>
     </Compile>
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -120,7 +106,6 @@
     <Folder Include="Enum\" />
     <Folder Include="Interface\" />
     <Folder Include="Services\" />
-    <Folder Include="LangResource\" />
     <Folder Include="Converters\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

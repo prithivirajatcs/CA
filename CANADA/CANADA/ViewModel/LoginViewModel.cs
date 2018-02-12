@@ -109,11 +109,6 @@ namespace CANADA.ViewModel
 
 
 
-        /// <summary>
-        /// Used to handle Login Button
-        /// </summary>
-        /// <param name="navService"></param>
-
         public LoginViewModel(INavigationService navService)
         {
             navigationService = navService;
@@ -139,7 +134,7 @@ namespace CANADA.ViewModel
                    }
 
                 AboutCanandaListModel resposeList = App.MyApplicationDataSource.GetAboutList().Result;
-               this.IsBusy = false;
+               //this.IsBusy = false;
                App.NavigationServiceInstance.NavigateTo(Enum.PageName.HOME, resposeList, false);
 
 
