@@ -8,6 +8,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 namespace CANADA.iOS.Renderer
 {
+    //Custom text box for login
     public class CustomEntryRenderer : EntryRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Entry> e)
