@@ -8,7 +8,7 @@ using Xamarin.Forms.Platform.Android;
 namespace CANADA.Droid
 {
     //[Activity(Label = "CANADA.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    [Activity(Label = "CANADA", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "CANADA", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Sensor)]
     public class MainActivity : FormsApplicationActivity
     {
         public static MainActivity CurrentActivity { get; private set; }
