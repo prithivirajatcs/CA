@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cc:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CANADA.View.HomePage" xmlns:cc="clr-namespace:CANADA.CustomControl;assembly=CANADA" Style="{StaticResource ContentPageStyle}" xmlns:conv="clr-namespace:CANADA.Converters;assembly=CANADA">
+<cc:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CANADA.View.HomePage" xmlns:cc="clr-namespace:CANADA.CustomControl;assembly=CANADA" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" Style="{StaticResource ContentPageStyle}" xmlns:conv="clr-namespace:CANADA.Converters;assembly=CANADA">
     <cc:BaseContentPage.Resources>
         <ResourceDictionary>
             <conv:UrlToImageSourceConverter x:Key="urlToImageSourceConverter" />
@@ -13,26 +13,50 @@
                     <TapGestureRecognizer Command="{Binding RemovePhotoCommand}" CommandParameter="{Binding}" NumberOfTapsRequired="1" />
                 </StackLayout.GestureRecognizers>
             </StackLayout>
-            <ListView x:Name="listOfBestPractices" IsPullToRefreshEnabled="true" RefreshCommand="{Binding RefreshBestPracticesCommand}" IsRefreshing="{Binding IsPullToRefreshEnabled}" SeparatorVisibility="None" ItemsSource="{Binding List}" HasUnevenRows="true">
+            <StackLayout HeightRequest="40" BackgroundColor="Silver">
+                <Label Text="click here to refresh" HorizontalOptions="CenterAndExpand" TextColor="#0D3D4F" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="15" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RefreshList}" CommandParameter="{Binding}" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <ListView x:Name="listOfBestPractices"  SeparatorVisibility="None" ItemsSource="{Binding List}" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <Grid Margin="12,0,12,0">
+                                <Grid Margin="12,0,12,0" RowSpacing="0" ColumnSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="1" />
                                     </Grid.RowDefinitions>
-                                    <Grid Grid.Row="0" HeightRequest="100" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" Grid.Column="0" HeightRequest="120" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Text="{Binding title}" FontSize="20" LineBreakMode="WordWrap" Grid.Row="0" TextColor="Black" />
-                                        <StackLayout Orientation="Horizontal" Grid.Row="1">
-                                            <Label Text="{Binding description}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="WordWrap" FontSize="14" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="Black" />
-                                            <Image Source="{Binding imageHref, Converter={StaticResource urlToImageSourceConverter}}" Aspect="AspectFill" HorizontalOptions="End" VerticalOptions="CenterAndExpand" />
-                                        </StackLayout>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="75*" />
+                                            <ColumnDefinition Width="5*" />
+                                            <ColumnDefinition Width="20*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding title}" FontSize="20" LineBreakMode="WordWrap" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Black" />
+                                        <!-- <StackLayout Orientation="Horizontal" Spacing="40" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="{Binding description}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="WordWrap" FontSize="14" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  TextColor="Black" />
+                                            <Image Source="{Binding imageHref, Converter={StaticResource urlToImageSourceConverter}}"  Aspect="AspectFill" HorizontalOptions="End" VerticalOptions="CenterAndExpand" />
+                                        </StackLayout>-->
+                                        <!-- <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                             </Grid.RowDefinitions>-->
+                                        <Label Text="{Binding description}" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" LineBreakMode="WordWrap" FontSize="13" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" TextColor="Black" />
+                                        <!--<Image Source="{Binding imageHref, Converter={StaticResource urlToImageSourceConverter}}" Grid.Row="1" Grid.Column="2"  Aspect="AspectFill" HorizontalOptions="End"  VerticalOptions="CenterAndExpand" />-->
+                                        <ffimageloading:CachedImage RetryCount="3" Source="{Binding imageHref, Converter={StaticResource urlToImageSourceConverter}}" Grid.Row="1" Grid.Column="2" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" HorizontalOptions="End" VerticalOptions="CenterAndExpand" LoadingPlaceholder="load.png"
+                                            ErrorPlaceholder="error.png">
+                                        </ffimageloading:CachedImage>
+                                        <!-- </Grid>-->
                                     </Grid>
                                     <BoxView Grid.Row="1" BackgroundColor="Black" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand">
                                     </BoxView>

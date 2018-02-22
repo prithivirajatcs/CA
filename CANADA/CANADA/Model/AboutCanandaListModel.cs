@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace CANADA.Model
@@ -9,6 +10,11 @@ namespace CANADA.Model
         public string pagetitle { get; set; }
         [JsonProperty("rows")]
         public List<CAList> calist { get; set; }
+
+        public static implicit operator List<object>(AboutCanandaListModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class CAList

@@ -26,7 +26,7 @@ namespace CANADA.Services
         {
             #region "Page Mapping Init"
             PageMapping.Clear();
-            PageMapping.Add(PageName.LOGIN, typeof(LoginPage));
+            //PageMapping.Add(PageName.LOGIN, typeof(LoginPage));
             PageMapping.Add(PageName.HOME, typeof(HomePage));
 
             #endregion

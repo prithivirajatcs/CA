@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using CANADA.Interface;
 using CANADA.Services;
 using CANADA.ViewModel;
+using CANADA.Model;
 
 namespace CANADA
 {
@@ -23,7 +24,8 @@ namespace CANADA
             MyApplicationDataSource = new RestDataSource();
             NavigationServiceInstance = DependencyService.Get<INavigationService>();
             NavigationServiceInstance.CreatePageMap();
-            NavigationServiceInstance.NavigateTo(Enum.PageName.LOGIN, "", true);
+            AboutCanandaListModel resposeList = App.MyApplicationDataSource.GetAboutList().Result;
+            NavigationServiceInstance.NavigateTo(Enum.PageName.HOME,resposeList, true);
         }
 
         protected override void OnStart()

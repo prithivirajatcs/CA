@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Input;
 using CANADA.Interface;
 using CANADA.Model;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace CANADA.ViewModel
@@ -14,17 +18,18 @@ namespace CANADA.ViewModel
         public INavigationService navigationService;
 
         bool ascending;
+       
 
-        bool _isPullToRefreshEnabled;
-        public bool IsPullToRefreshEnabled
-        {
-            get { return this._isPullToRefreshEnabled; }
-            set
-            {
-                this._isPullToRefreshEnabled = value;
-                OnPropertyChanged("IsPullToRefreshEnabled");
-            }
-        }
+        //bool _isPullToRefreshEnabled;
+        //public bool IsPullToRefreshEnabled
+        //{
+        //    get { return this._isPullToRefreshEnabled; }
+        //    set
+        //    {
+        //        this._isPullToRefreshEnabled = value;
+        //        OnPropertyChanged("IsPullToRefreshEnabled");
+        //    }
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
@@ -35,8 +40,12 @@ namespace CANADA.ViewModel
         public HomeViewModel(INavigationService navService, AboutCanandaListModel args)
         {
             navigationService = navService;
-
+           
             List = new ObservableCollection<CAList>(args.calist);
+
+
+
+           
 
 
             this.RemovePhotoCommand = new Command((obj) =>
@@ -57,22 +66,26 @@ namespace CANADA.ViewModel
 
                     ascending = false;
 
-                    var lo = List.OrderByDescending(X => X.title).ToList();
-                    List = new ObservableCollection<CAList>(lo);
+                    //var lo = List.OrderByDescending(X => X.title).ToList();
+
+                    List = new ObservableCollection<CAList>(args.calist);
 
                 }
 
             });
 
-            this.RefreshBestPracticesCommand = new Command( () =>
-            {
-                AboutCanandaListModel resposeList = App.MyApplicationDataSource.GetAboutList().Result;
-                    IsPullToRefreshEnabled = false;
+
+            this.RefreshList = new Command(() =>
+              {
+               AboutCanandaListModel resposeList = App.MyApplicationDataSource.GetAboutList().Result;
 
 
-            });
+              });
 
         }
+
+
+
 
         ObservableCollection<CAList> _list;
 
@@ -89,6 +102,9 @@ namespace CANADA.ViewModel
 
 
         public ICommand RemovePhotoCommand { get; set; }
-        public ICommand RefreshBestPracticesCommand { get; set; }
+        //public ICommand RefreshBestPracticesCommand { get; set; }
+
+
+        public ICommand RefreshList { get; set; }
     }
 }

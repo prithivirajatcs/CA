@@ -1,0 +1,54 @@
+﻿using System;
+using System.Linq;
+using NUnit.Framework;
+using Xamarin.UITest;
+using Xamarin.UITest.Queries;
+
+namespace CANADA.UITests
+{
+    [TestFixture(Platform.Android)]
+    [TestFixture(Platform.iOS)]
+    public class HomeScreen
+    {
+        IApp app;
+        Platform platform;
+
+        public HomeScreen(Platform platform)
+        {
+            this.platform = platform;
+        }
+
+        [SetUp]
+        public void BeforeEachTest()
+        {
+            app = AppInitializer.StartApp(platform);
+        }
+
+        [Test]
+        public void WelcomeTextIsDisplayed()
+        {
+            AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin Forms!"));
+            app.Screenshot("Welcome screen.");
+
+            Assert.IsTrue(results.Any());
+        }
+
+        [Test]
+        public void DataDisplayed()
+        {
+            string data= app.Query(c=>c.Marked(""))[0].Text;
+            if (data != null)
+                Assert.Pass();
+            else
+                Assert.Fail();
+        }
+
+         
+           
+
+           
+
+            
+    }
+ }
+

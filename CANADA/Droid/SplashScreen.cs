@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using CANADA.Model;
 
 namespace CANADA.Droid
 {
@@ -15,6 +16,8 @@ namespace CANADA.Droid
             base.OnCreate(bundle);
             var intent = new Intent(this, typeof(MainActivity));
             StartActivity(intent);
+
+           
             Finish();//Finish Activity
 
         }

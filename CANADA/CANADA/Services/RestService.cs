@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CANADA.Enum;
 using CANADA.Interface;
+using CANADA.Model;
 using Newtonsoft.Json;
 
 namespace CANADA.Services
@@ -77,8 +79,8 @@ namespace CANADA.Services
                     }
 
                     var retTask = client.GetAsync(requestStr);
-                    Task.WaitAll(retTask);
-
+                   // Task.WaitAll(retTask);
+                    await  Task.WhenAll(retTask);
                     HttpResponseMessage response = retTask.Result;// await client.GetAsync(requestStr);
 
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -87,13 +89,16 @@ namespace CANADA.Services
                         var strResponse = await response.Content.ReadAsStringAsync();
 
                         var responseObj = (T)JsonConvert.DeserializeObject(strResponse, typeof(T));
-
+                       
                         return responseObj;
                     }
                     else
                     {
-                        var responseError = "{\"status_code:'FAILED'\"}";
-
+                       // var responseError = "{\"status_code:'FAILED'\"}";
+                        var responseError = string.Format("Bad Request: {0}\n{1}\n{2}",
+                                              response.StatusCode,
+                                              response.ReasonPhrase,
+                                                        response.Headers);
                         var responseObj = (T)JsonConvert.DeserializeObject(responseError, typeof(T));
 
                         return responseObj;
@@ -105,5 +110,8 @@ namespace CANADA.Services
             }
             return (T)(object)"{}";
         }
+
+      
+
     }
 }

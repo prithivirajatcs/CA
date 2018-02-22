@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using FFImageLoading.Forms.Droid;
 using Xamarin.Forms.Platform.Android;
 
 namespace CANADA.Droid
@@ -14,10 +15,16 @@ namespace CANADA.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
-            CurrentActivity = this;
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            
+                base.OnCreate(bundle);
+                CurrentActivity = this;
+                global::Xamarin.Forms.Forms.Init(this, bundle);
+                CachedImageRenderer.Init(true);
+                LoadApplication(new App());
+                
         }
+            
+           
     }
 }
+
