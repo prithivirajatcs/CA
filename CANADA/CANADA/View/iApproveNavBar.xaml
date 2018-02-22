@@ -9,7 +9,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label x:Name="HeaderTitle" Grid.Column="1" Text="iApprove" Style="{StaticResource NaviBarTitleStyle}" YAlign="Center" FontSize="16" FontAttributes="Bold">
+                <Label x:Name="HeaderTitle" Grid.Column="1" Text="iApprove" Style="{StaticResource NaviBarTitleStyle}" YAlign="Center" XAlign="Center" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" FontAttributes="Bold">
                 </Label>
             </Grid>
             <ContentPresenter Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />

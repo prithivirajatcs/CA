@@ -80,7 +80,7 @@ namespace CANADA.Services
 
                     var retTask = client.GetAsync(requestStr);
                    // Task.WaitAll(retTask);
-                    await  Task.WhenAll(retTask);
+                      Task.WhenAll(retTask);
                     HttpResponseMessage response = retTask.Result;// await client.GetAsync(requestStr);
 
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -100,7 +100,7 @@ namespace CANADA.Services
                                               response.ReasonPhrase,
                                                         response.Headers);
                         var responseObj = (T)JsonConvert.DeserializeObject(responseError, typeof(T));
-
+                        await App.Current.MainPage.DisplayAlert("Error",response.ReasonPhrase.ToString(),"Ok");
                         return responseObj;
                     }
                 }
